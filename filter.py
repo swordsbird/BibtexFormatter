@@ -22,7 +22,7 @@ def citation_to_str(citation):
     s += '@%s{\t\t%s,\n' % (citation['ENTRYTYPE'], citation['ID'])
     for attr in citation:
         if attr not in all_reserved_attr:
-            s += '\t%s\t = {%s},\n' % (attr, citation[attr])
+            s += '\t%s\t\t = {%s},\n' % (attr, citation[attr])
     s += '}\n'
     return s
 
@@ -94,7 +94,7 @@ if __name__ == '__main__':
                     item[attr] = value
             for attr in all_reserved_attr:
                 item[attr] = citation[attr]
-            if 'International Conference on Learning Representations' in conf:
+            if 'International Conference on Learning Representations' in conf or 'AAAI' in conf or 'ICLR' in conf:
                 missing_attrs = [attr for attr in missing_attrs if attr != 'pages']
         elif citation['ENTRYTYPE'] == 'article':
             journal = citation['journal']
